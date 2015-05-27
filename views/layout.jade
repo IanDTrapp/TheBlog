@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title #{title} - My Blog
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    
+    header
+      h1 Welcome to my Blog!
+    .container
+      .login
+        if (!user)
+          button(onclick="location.href='/login';") Login
+          button(onclick="location.href='/register';") Register
+        if (user)
+          p You are currently logged in as #{user.username}
+          button(onclick="location.href='/logout';") Logout
+      .main-content
+        br
+        block content
+        br
+      .sidebar
+        br
+        block sidebar
+    footer
+      p Ian Trapp 2015 - GitHub - IanDTrapp

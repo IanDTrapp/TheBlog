@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title #{title} - My Blog
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+
+    header
+      h1 Login
+    div
+      form(name="add-estimation", method="post")
+        div.input
+            span.label Username
+            br
+            input(type="text", name="user")
+        br
+        div.input
+            span.label Password
+            br
+            input(type="password", name="pass")
+        br
+        div.actions
+            input(type="submit", value="Login") 
+    footer
+      p Ian Trapp 2015 - GitHub - IanDTrapp

@@ -1,0 +1,37 @@
+extend layout
+
+block content
+  button(onclick="location.href='/posts';") Post a new article
+  .mainpage
+    br
+    h2 Recent Articles
+    h3= tit1
+    h4= con1
+    img(src=img1)
+    br
+    h3= tit2
+    h4= con2
+    img(src=img2)
+    br
+    h3= tit3
+    h4= con3
+    img(src=img3)
+    br
+    h3= tit4
+    h4= con4
+    img(src=img4)
+    br
+    h3= tit5
+    h4= con5
+    img(src=img5)
+
+block sidebar
+  .widget
+    h2 About Me
+    p
+      | I go to the University of Georgia
+      | where I am studying computer science, 
+      | and I'm due to graduate in 2017! Go dawgs!
+    button(onclick="location.href='/about';") Read more about me
+
+
