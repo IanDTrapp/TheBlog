@@ -9,6 +9,6 @@
     "stylus": "^0.49.1",
     "jade": "^1.7.0",
     "mongodb": "*",
-    "express-stormpath":"*"
+    "express-stormpath": "*"
   }
 }

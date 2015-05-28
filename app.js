@@ -31,7 +31,8 @@ mongodb.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 
     var _1title, _2title, _3title, _4title, _5title;
     var _1content, _2content, _3content, _4content, _5content;
-    var im1, im2, im3, im4, im5
+    var im1, im2, im3, im4, im5;
+    var d1, d2, d3, d4, d5;
 
     // Renders home page and displays most recent DB posts
     app.get('/', function (req, res, next) {
@@ -45,21 +46,29 @@ mongodb.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
             if(items[0].img) {
                 im1 = items[0].img.toString();
             }
+
+
             _2title = items[1].title.toString();
             _2content = items[1].content.toString();
             if(items[1].img) {
                 im2 = items[1].img.toString();
             }
+
+
             _3title = items[2].title.toString();
             _3content = items[2].content.toString();
             if(items[2].img) {
                 im3 = items[2].img.toString();
             }
+
+
             _4title = items[3].title.toString();
             _4content = items[3].content.toString();
             if(items[3].img) {
                 im4 = items[3].img.toString();
             }
+
+
             _5title = items[4].title.toString();
             _5content = items[4].content.toString();
             if(items[4].img) {
@@ -68,34 +77,34 @@ mongodb.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 
 
             res.render('index', {tit1: _1title, con1: _1content,
-                    tit2: _2title, con2: _2content, tit3: _3title,
-                    con4: _3content, tit4: _4title, con4: _4content,
-                    tit5: _5title, con5: _5content, user: req.user,
-                    img1: im1, img2: im2, img3: im3, img4: im4,
-                    img5: im5, title: 'Welcome!'
-                })
+                tit2: _2title, con2: _2content, tit3: _3title,
+                con4: _3content, tit4: _4title, con4: _4content,
+                tit5: _5title, con5: _5content, user: req.user,
+                img1: im1, img2: im2, img3: im3, img4: im4,
+                img5: im5, title: 'Welcome!'
+            })
         })
     })
-  
+
     // Renders
     app.get('/posts', stormpath.loginRequired, function(req, res) {
-            res.render('postpage', {title : 'Post Something!'})
+        res.render('postpage', {title : 'Post Something!'})
     })
 
     app.get('/successful', function(req, res) {
-             res.render('succpage', {title : 'Post Successful!' })
+        res.render('succpage', {title : 'Post Successful!' })
     })
     app.get('/about', function(req, res) {
-            res.render('about', { title : 'About Me'})
+        res.render('about', { title : 'About Me'})
     })
     app.get('/newuser', function(req, res) {
-            res.render('newuser', {title : 'Create Account'})
+        res.render('newuser', {title : 'Create Account'})
     })
     app.get('/login', function(req, res) {
-            res.render('login', {title : 'Login'})
+        res.render('login', {title : 'Login'})
     })
     app.get('/accessdenied', function(req, res) {
-            res.render('accessdenied', {title : 'Uh oh!'})
+        res.render('accessdenied', {title : 'Uh oh!'})
     })
 
     // Handle Post Request for a new article
@@ -106,25 +115,12 @@ mongodb.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
         var document = {title: title, content: content, img: img};
         db.collection('test').insert(document, function(err, records) {
             if (err) throw err;
-            })
+        })
         console.log("Post received: \nTitle:\n%s\nContent:\n%s\nImage Link:\n%s\n", title, content, img);
         res.render('succpage', { title : 'Post successful!' })
     })
-
-    /*// Handle Post Request for login page
-    app.post('/login', function(req, res) {
-        var title = req.body.user;
-        var content = req.body.pass;
-        var document = {title: title, content: content};
-        console.log("Login Received: \nTitle:\n%s\nContent:\n%s", title, content);
-        res.render('index', { title : 'Login Successful!' })
-    })*/
 
     // Handle Post Request for register user
     app.listen(3000);
     console.log("Listening on port 3000");
 })
-
-
-
-

@@ -13,8 +13,8 @@ html
           button(onclick="location.href='/login';") Login
           button(onclick="location.href='/register';") Register
         if (user)
-          p You are currently logged in as #{user.username}
-          button(onclick="location.href='/logout';") Logout
+          //p You are currently logged in as #{user.username}
+          button(onclick="location.href='/logout';") Logged in as #{user.username} - Click to logout
       .main-content
         br
         block content
